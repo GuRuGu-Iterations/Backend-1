@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
 
+const booksController = require("../controllers/books");
+
 // @route   GET api/books
 // @desc    Get all books
 // @access  Public
-router.get("/", (req, res) => {
-  res.status(200).json({ msg: "Get books" });
-});
+router.get("/", booksController.index);
 
 router.get("/:id", (req, res) => {
   res.status(200).json({ msg: "Get a book" });
