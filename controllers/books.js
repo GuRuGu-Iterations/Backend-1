@@ -12,5 +12,20 @@ module.exports = {
       console.error("Error:", err.message);
       res.status(500).json({ error: err.message });
     }
+  },
+  // @route   POST api/books
+  // @desc    Create a new book
+  // @access  Public
+  create: async (req, res) => {
+    const book = req.body;
+
+    try {
+      const newBook = await Book.create(book);
+
+      res.status(201).json(newBook);
+    } catch (err) {
+      console.error("Error:", err.message);
+      res.status(500).json({ error: err.message });
+    }
   }
 };

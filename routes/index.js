@@ -12,9 +12,10 @@ router.get("/:id", (req, res) => {
   res.status(200).json({ msg: "Get a book" });
 });
 
-router.post("/", (req, res) => {
-  res.status(201).json({ msg: "Create a book" });
-});
+// @route   POST api/books
+// @desc    Create a new book
+// @access  Public
+router.post("/", booksController.create);
 
 router.patch("/:id", (req, res) => {
   res.status(201).json({ msg: "Update a book" });
