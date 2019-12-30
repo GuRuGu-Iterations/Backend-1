@@ -27,5 +27,20 @@ module.exports = {
       console.error("Error:", err.message);
       res.status(500).json({ error: err.message });
     }
+  },
+  // @route   DELETE api/books
+  // @desc    Delete a book
+  // @access  Public
+  delete: async (req, res) => {
+    const bookId = req.params.id;
+
+    try {
+      await Book.findByIdAndDelete(bookId);
+
+      res.status(200).json({ msg: "Book deleted" });
+    } catch (err) {
+      console.error("Error:", err.message);
+      res.status(500).json(err.message);
+    }
   }
 };

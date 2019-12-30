@@ -21,8 +21,9 @@ router.patch("/:id", (req, res) => {
   res.status(201).json({ msg: "Update a book" });
 });
 
-router.delete("/:id", (req, res) => {
-  res.status(201).json({ msg: "Delete a book" });
-});
+// @route    DELETE api/books
+// @desc     Delete a book
+// @access   Public
+router.delete("/:id", booksController.delete);
 
 module.exports = router;
