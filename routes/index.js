@@ -18,9 +18,10 @@ router.get("/:id", booksController.read);
 // @access  Public
 router.post("/", booksController.create);
 
-router.patch("/:id", (req, res) => {
-  res.status(201).json({ msg: "Update a book" });
-});
+// @route   PATCH api/books/:id
+// @desc    Update a book
+// @access  Public
+router.patch("/:id", booksController.update);
 
 // @route    DELETE api/books/:id
 // @desc     Delete a book

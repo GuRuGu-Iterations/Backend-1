@@ -43,6 +43,24 @@ module.exports = {
       res.status(500).json({ error: err.message });
     }
   },
+  // @route   PATCH api/books/:id
+  // @desc    Update a book
+  // @access  Public
+  update: async (req, res) => {
+    const bookId = req.params.id;
+    const book = req.body;
+
+    try {
+      const updatedBook = await Book.findByIdAndUpdate(bookId, book, {
+        new: true
+      });
+
+      res.status(200).json(updatedBook);
+    } catch (err) {
+      console.error("Error:", err.message);
+      res.status(500).json({ error: err.message });
+    }
+  },
   // @route   DELETE api/books
   // @desc    Delete a book
   // @access  Public
