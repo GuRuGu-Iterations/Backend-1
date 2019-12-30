@@ -28,6 +28,21 @@ module.exports = {
       res.status(500).json({ error: err.message });
     }
   },
+  // @route   GET apu/books/:id
+  // @desc    Get a book
+  // @access  Public
+  read: async (req, res) => {
+    const bookId = req.params.id;
+
+    try {
+      const book = await Book.findById(bookId);
+
+      res.status(200).json(book);
+    } catch (err) {
+      console.error("Error:", err.message);
+      res.status(500).json({ error: err.message });
+    }
+  },
   // @route   DELETE api/books
   // @desc    Delete a book
   // @access  Public

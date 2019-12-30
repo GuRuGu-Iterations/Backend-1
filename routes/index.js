@@ -8,9 +8,10 @@ const booksController = require("../controllers/books");
 // @access  Public
 router.get("/", booksController.index);
 
-router.get("/:id", (req, res) => {
-  res.status(200).json({ msg: "Get a book" });
-});
+// @route   GET apu/books/:id
+// @desc    Get a book
+// @access  Public
+router.get("/:id", booksController.read);
 
 // @route   POST api/books
 // @desc    Create a new book
@@ -21,7 +22,7 @@ router.patch("/:id", (req, res) => {
   res.status(201).json({ msg: "Update a book" });
 });
 
-// @route    DELETE api/books
+// @route    DELETE api/books/:id
 // @desc     Delete a book
 // @access   Public
 router.delete("/:id", booksController.delete);
